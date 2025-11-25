@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Conferences par pathologie{% endblock %}
+
+{% block body %}
+    <h1>Conferences par pathologie</h1>
+
+    <form method="get" action="{{ path('app_conf_by_pathologie') }}">
+        <label for="patho">Choisir une pathologie</label>
+        <select id="patho" name="patho">
+            <option value="">-- sélection --</option>
+            {% for p in pathologies %}
+                <option value="{{ p.id }}" {% if selected == p.id %}selected{% endif %}>{{ p.libelle }}</option>
+            {% endfor %}
+        </select>
+        <button class="btn" type="submit">Voir</button>
+    </form>
+
+    {% if conferences is not empty %}
+        <h2>Résultats</h2>
+        <table class="table">
+            <thead>
+                <tr><th>Id</th><th>Date</th><th>Medecin</th></tr>
+            </thead>
+            <tbody>
+                {% for c in conferences %}
+                    <tr>
+                        <td>{{ c.id }}</td>
+                        <td>{{ c.date ? c.date|date('Y-m-d') : '' }}</td>
+                        <td>{{ c.medecin ? c.medecin.email : '' }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Conference;
 use App\Form\ConferenceType;
 use App\Repository\ConferenceRepository;
+use App\Repository\PathologieRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -46,6 +47,26 @@ final class ConfController extends AbstractController
 
         return $this->render('conf/index.html.twig', [
             'conferences' => $confs,
+        ]);
+    }
+
+    #[Route('/by-pathologie', name: 'app_conf_by_pathologie', methods: ['GET'])]
+    public function byPathologie(PathologieRepository $pathologieRepository, ConferenceRepository $conferenceRepository, Request $request): Response
+    {
+        $pathologies = $pathologieRepository->findAll();
+
+        $selectedId = $request->query->getInt('patho');
+        $conferences = [];
+
+        if ($selectedId) {
+            $conferences = $conferenceRepository->findBy(['pathologie' => $selectedId]);
+        }
+
+        return $this->render('conf/by_pathologie.html.twig', [
+            'pathologies' => $pathologies,
+            'conferences' => $conferences,
+            'selected' => $selectedId,
+            
         ]);
     }
 
