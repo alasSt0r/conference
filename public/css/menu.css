@@ -53,3 +53,97 @@ body{
 main.container{
     padding:2rem 1rem;
 }
+
+/* Registration page styles */
+.registration-page {
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    padding:2rem 0;
+}
+.registration-card{
+    width:100%;
+    max-width:480px;
+    background:#fff;
+    border:1px solid #e6e6e6;
+    border-radius:8px;
+    padding:1.25rem 1.5rem;
+    box-shadow:0 6px 18px rgba(0,0,0,0.06);
+}
+.registration-card h1{
+    margin-top:0;
+    font-size:1.5rem;
+}
+.form-row{
+    margin-bottom:0.75rem;
+}
+label{display:block;margin-bottom:0.25rem;font-size:0.95rem}
+input[type="text"], input[type="email"], input[type="password"], .form-control {
+    width:100%;
+    padding:0.55rem 0.6rem;
+    border:1px solid #ccc;
+    border-radius:4px;
+    box-sizing:border-box;
+}
+.btn{
+    background:var(--accent);
+    color:#fff;
+    border:none;
+    padding:0.6rem 1rem;
+    border-radius:4px;
+    cursor:pointer;
+}
+.btn:hover{opacity:0.95}
+.form-error{
+    color:#b00020;
+    font-size:0.9rem;
+    margin-bottom:0.5rem;
+}
+
+/* CRUD - conf styles */
+.card{
+    background:#fff;
+    border:1px solid #e6e6e6;
+    border-radius:8px;
+    padding:1rem;
+    box-shadow:0 6px 18px rgba(0,0,0,0.04);
+    margin-bottom:1rem;
+}
+.table{
+    width:100%;
+    border-collapse:collapse;
+    margin-bottom:1rem;
+}
+.table th, .table td{
+    border:1px solid #f0f0f0;
+    padding:0.6rem 0.75rem;
+    text-align:left;
+}
+.table thead th{
+    background:#fafafa;
+    font-weight:600;
+}
+.crud-actions a{
+    display:inline-block;
+    margin-right:0.5rem;
+    color:var(--accent);
+    text-decoration:none;
+    padding:0.25rem 0.5rem;
+    border-radius:4px;
+}
+.crud-actions a:hover{background:rgba(43,108,176,0.08)}
+.btn{ /* enhance existing btn */
+    display:inline-block;
+    text-decoration:none;
+}
+.muted-link{
+    color:#666;
+    text-decoration:none;
+}
+
+@media (max-width:720px){
+    .container{padding:0 0.5rem}
+    .table th, .table td{font-size:0.95rem;padding:0.5rem}
+}
+
+
